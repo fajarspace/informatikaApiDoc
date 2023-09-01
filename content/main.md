@@ -5,9 +5,9 @@ title: API Reference
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Computer Science API! You can use our API to access various Computer Science-related endpoints, which can provide information on a wide range of topics related to computer science and technology within our database.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We offer programming language bindings in Shell, PHP, and JavaScript! You can find code examples in the dark area on the right-hand side, and you can switch between programming languages using the tabs in the top right corner.
 
 **This example API documentation page was created with [DocuAPI](https://github.com/bep/docuapi/), a multilingual documentation theme for the static site generator [Hugo](http://gohugo.io/).** 
 
@@ -54,12 +54,12 @@ let api = kittn.authorize('meowmeowmeow');
 
 > Make sure to replace `meowmeowmeow` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Uses Token to allow access to the API. You can generate a new Token at our [developer portal](http://example.com/developers).
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Expects for the API key to be included in all API requests to the server in a header that looks like the following:"
 
-`Authorization: meowmeowmeow`
+`Authorization: iniadalahtoken`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>iniadalahtoken</code> with your personal Token.
 </aside>

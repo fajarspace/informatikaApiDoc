@@ -14,7 +14,7 @@ require_once 'path/to/auth.php';
 
 $api = authorize("meowmeowmeow");
 
-$result = $api->getKittens();
+$result = $api->getdosen();
 
 ?>
 ```
@@ -23,11 +23,11 @@ $result = $api->getKittens();
 import kittn
 
 api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+api.dosen.get()
 ```
 
 ```shell
-curl "http://example.com/api/kittens"
+curl "http://example.com/api/dosen"
   -H "Authorization: meowmeowmeow"
 ```
 
@@ -35,7 +35,7 @@ curl "http://example.com/api/kittens"
 const kittn = require('kittn');
 
 let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+let dosen = api.dosen.get();
 ```
 
 > The above command returns JSON structured like this:
@@ -59,18 +59,18 @@ let kittens = api.kittens.get();
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all dosen.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://informatikaupb.com/api/dosen`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
 include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+available | true | If set to false, the result will include dosen that have already been adopted.
 
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!

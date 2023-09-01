@@ -1,27 +1,32 @@
 ---
 weight: 12
-title: Get a Specific Kitten
+title: Get a Specific Dosen
 ---
 
-## Get a Specific Kitten
+## Get a Specific Dosen
 
-```go
-package main
+```php
+<?php
 
-import "github.com/bep/kittn/auth"
+$curl = curl_init();
 
-func main() {
-	api := auth.Authorize("meowmeowmeow")
+curl_setopt($curl, CURLOPT_URL, 'http://example.com/api/kittens/2');
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER, [
+    'Authorization: meowmeowmeow',
+]);
 
-	_ = api.GetKitten(2)
+$response = curl_exec($curl);
+
+if (curl_errno($curl)) {
+    echo 'Error: ' . curl_error($curl);
 }
-```
 
-```ruby
-require 'kittn'
+curl_close($curl);
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+echo $response;
+
+?>
 ```
 
 ```python
