@@ -9,52 +9,76 @@ title: Dosen
 
 ```php
 <?php
+$apiUrl = 'https://informatikaupb.com/api/dosen';
 
-require_once 'path/to/auth.php';
+$ch = curl_init($apiUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-$api = authorize("meowmeowmeow");
+$response = curl_exec($ch);
 
-$result = $api->getdosen();
-
+if ($response === false) {
+    echo 'Error: ' . curl_error($ch);
+} else {
+    $data = json_decode($response, true);
+    print_r($data);
+}
+curl_close($ch);
 ?>
 ```
 
 ```python
-import kittn
+import requests
 
-api = kittn.authorize('meowmeowmeow')
-api.dosen.get()
-```
+api_url = 'https://informatikaupb.com/api/dosen'
 
-```shell
-curl "http://example.com/api/dosen"
-  -H "Authorization: meowmeowmeow"
+response = requests.get(api_url)
+
+if response.status_code == 200:
+    data = response.json()
+    print(data)
+else:
+    print(f'Error: {response.status_code}')
+
 ```
 
 ```javascript
-const kittn = require('kittn');
+const apiUrl = "https://informatikaupb.com/api/dosen";
 
-let api = kittn.authorize('meowmeowmeow');
-let dosen = api.dosen.get();
+fetch(apiUrl)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    // Proses data dosen di sini
+    console.log(data);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 ```
 
-> The above command returns JSON structured like this:
+> Kode Status: 200 OK
 
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+    "uuid": "16f1ea02-29b6-48f5-a24d-f3a92d4e72c7",
+    "nidn": "0421117604",
+    "nama": "Abdul Halim Anshor, S.Kom., M.Kom.",
+    "email": "abdulhalimanshor@pelitabangsa.ac.id",
+    "telp": "",
+    "linkwa": ""
   },
   {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "uuid": "e586d81d-999b-40c6-a635-6d816f8f4a33",
+    "nidn": "0412068909",
+    "nama": "Aceng Badruzzaman, S. Pd. I, M. Ag.",
+    "email": "aceng_badruzzaman@pelitabangsa.ac.id",
+    "telp": "",
+    "linkwa": ""
   }
 ]
 ```
@@ -65,13 +89,23 @@ This endpoint retrieves all dosen.
 
 `GET https://informatikaupb.com/api/dosen`
 
-### Query Parameters
+### Parameter Path
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include dosen that have already been adopted.
+| Parameter | Description                                               |
+| --------- | --------------------------------------------------------- |
+| UUID      | (String, required) - ID unik yang mengidentifikasi dosen. |
 
-<aside class="success">
+### Parameter Query
+
+Anda dapat menggunakan parameter query untuk memilih data yang ingin Anda ambil.
+
+| Parameter | Description                                                                     |
+| --------- | ------------------------------------------------------------------------------- |
+| nama      | (String, opsional) - Nama dosen yang ingin dicari.                              |
+| nidn      | (String, opsional) - NIDN (Nomor Induk Dosen Nasional) dosen yang ingin dicari. |
+| email     | (String, opsional) - Alamat email dosen yang ingin dicari.                      |
+| telp      | (String, opsional) - Nomor telepon dosen yang ingin dicari.                     |
+
+<!-- <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
-</aside>
+</aside> -->

@@ -9,29 +9,32 @@ Welcome to the Computer Science API! You can use our API to access various Compu
 
 We offer programming language bindings in Shell, PHP, and JavaScript! You can find code examples in the dark area on the right-hand side, and you can switch between programming languages using the tabs in the top right corner.
 
-**This example API documentation page was created with [DocuAPI](https://github.com/bep/docuapi/), a multilingual documentation theme for the static site generator [Hugo](http://gohugo.io/).** 
+**This example API documentation page was created with [DocuAPI](https://github.com/bep/docuapi/), a multilingual documentation theme for the static site generator [Hugo](http://gohugo.io/).**
 
 # Authentication
 
 > To authorize, use this code:
 
-```go
-package main
+```php
+<?php
 
-import "github.com/bep/kittn/auth"
+$apiEndpoint = 'api_endpoint_here';
+$authorizationHeader = 'Authorization: meowmeowmeow';
 
-func main() {
-	api := auth.Authorize("meowmeowmeow")
+$ch = curl_init($apiEndpoint);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [$authorizationHeader]);
 
-	// Just to make it compile
-	_ = api
+$response = curl_exec($ch);
+
+if (curl_errno($ch)) {
+    echo 'Error: ' . curl_error($ch);
 }
-```
 
-```ruby
-require 'kittn'
+curl_close($ch);
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+?>
+
 ```
 
 ```python
@@ -40,16 +43,10 @@ import kittn
 api = kittn.authorize('meowmeowmeow')
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
 ```javascript
-const kittn = require('kittn');
+const kittn = require("kittn");
 
-let api = kittn.authorize('meowmeowmeow');
+let api = kittn.authorize("meowmeowmeow");
 ```
 
 > Make sure to replace `meowmeowmeow` with your API key.
